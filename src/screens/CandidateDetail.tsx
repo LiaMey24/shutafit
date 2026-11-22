@@ -76,7 +76,7 @@ export default function CandidateDetail() {
     <div className="pb-28">
       <div className="relative h-72">
         <Hero name={other.name} photo={other.photo} id={other.id} className="h-full w-full" />
-        <button type="button" onClick={() => navigate(-1)} className="absolute top-4 right-4 rounded-full bg-white/90 px-3 py-1.5 text-sm font-medium shadow">
+        <button type="button" onClick={() => navigate(-1)} className="absolute top-4 right-16 rounded-full bg-white/90 px-3 py-1.5 text-sm font-medium shadow">
           → חזרה
         </button>
         <div className="absolute -bottom-8 left-5 rounded-full bg-white p-1 shadow-lg">
