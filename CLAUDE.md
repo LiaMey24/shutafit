@@ -36,6 +36,8 @@ The product spec's "3-layer questionnaire" drives the whole data model and match
 
 `src/store/useApp.ts` is the one Zustand store, persisted under the localStorage key `shutafit-v1` (change the key if the state shape changes incompatibly). It also exports `buildDeck` (hard filter → remove already-swiped → sort by score) and the demo behavior: seed users "like back" with a probability tied to the match score, and the chat sends a canned reply after a delay. Zustand v5 is in use: selectors must not return a new object or array on every call, or rendering loops. Select primitives separately.
 
+A mutual match opens `src/components/MatchModal.tsx`: a full-screen pastel mint overlay (Tailwind `mint-200` background, `mint-700` text) with a large "MATCH!" headline, both avatars, and buttons to open the chat or keep browsing. It is shown from `Discover.tsx` and `CandidateDetail.tsx` when `swipe()` returns true. To test it without onboarding, seed a `me` profile into `localStorage` under `shutafit-v1`.
+
 Routing uses `HashRouter` (`src/App.tsx`). Routes other than `/onboarding` are wrapped in `RequireProfile`, which redirects to onboarding when there is no `me`. Onboarding also serves as "edit profile" (it starts from the existing `me`).
 
 ## Scope
