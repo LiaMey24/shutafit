@@ -42,10 +42,16 @@ export interface Personality {
   music: string[];
 }
 
+export type Gender = 'f' | 'm';
+
 export interface Profile {
   id: string;
   name: string;
   age: number;
+  /** Optional so older saved profiles stay valid. */
+  gender?: Gender;
+  /** Desired move-in month, "YYYY-MM". Optional for older saved profiles. */
+  moveIn?: string;
   occupation: string;
   bio: string;
   /** Data URL of an uploaded photo; avatar falls back to initials. */

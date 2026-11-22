@@ -1,7 +1,11 @@
 import { useMemo, useRef, useState } from 'react';
 import SwipeCard, { type SwipeCardHandle } from '../components/SwipeCard';
 import MatchModal from '../components/MatchModal';
+import FilterSheet from '../components/FilterSheet';
+import SearchBar from '../components/SearchBar';
 import { PrimaryButton } from '../components/ui';
+import { isEmptyFilters, matchesSearch } from '../matching/searchFilters';
+import { useFilters } from '../store/useFilters';
 import { SEED_PROFILES } from '../data/seedProfiles';
 import { buildDeck, FREE_SWIPES_PER_DAY, getProfile, useApp } from '../store/useApp';
 import type { SwipeDir } from '../types';
@@ -16,8 +20,15 @@ export default function Discover() {
   const [matchedId, setMatchedId] = useState<string | null>(null);
   const cardRef = useRef<SwipeCardHandle>(null);
 
-  const deck = useMemo(() => buildDeck(me, swipes), [me, swipes]);
-  const filteredOut = SEED_PROFILES.length - Object.keys(swipes).length - deck.length;
+  const filters = useFilters((s) => s.filters);
+  const setFilters = useFilters((s) => s.set);
+  const resetFilters = useFilters((s) => s.reset);
+  const [sheetOpen, setSheetOpen] = useState(false);
+
+  const fullDeck = useMemo(() => buildDeck(me, swipes), [me, swipes]);
+  const deck = useMemo(() => fullDeck.filter((c) => matchesSearch(c.profile, filters)), [fullDeck, filters]);
+  const searching = !isEmptyFilters(filters);
+  const filteredOut = SEED_PROFILES.length - Object.keys(swipes).length - fullDeck.length;
   const top = deck[0];
   const matched = matchedId ? getProfile(matchedId) : undefined;
 
@@ -35,6 +46,10 @@ export default function Discover() {
         </span>
       </header>
 
+      <div className="mb-3">
+        <SearchBar onOpenFilters={() => setSheetOpen(true)} />
+      </div>
+
       <div className="relative flex-1">
         {left <= 0 ? (
           <div className="flex h-full flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow-xl">
@@ -50,6 +65,15 @@ export default function Discover() {
             {deck[1] && <div className="absolute inset-x-3 top-3 bottom-0 rounded-3xl bg-white/70 shadow" />}
             <SwipeCard key={top.profile.id} ref={cardRef} me={me} profile={top.profile} score={top.score} onSwiped={onSwiped} />
           </>
+        ) : searching && fullDeck.length > 0 ? (
+          <div className="flex h-full flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow-xl">
+            <div className="text-5xl">🔍</div>
+            <h2 className="mt-3 text-xl font-extrabold">אין מועמדים בסינון הזה</h2>
+            <p className="mt-1 text-sm text-slate-500">נסי להרחיב את הסינון או לאפס אותו.</p>
+            <PrimaryButton className="mt-5" onClick={resetFilters}>
+              איפוס סינון
+            </PrimaryButton>
+          </div>
         ) : (
           <div className="flex h-full flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow-xl">
             <div className="text-5xl">🏁</div>
@@ -83,6 +107,7 @@ export default function Discover() {
         </div>
       )}
 
+      {sheetOpen && <FilterSheet filters={filters} onChange={setFilters} count={deck.length} onClose={() => setSheetOpen(false)} />}
       {matched && <MatchModal me={me} other={matched} onClose={() => setMatchedId(null)} />}
     </div>
   );

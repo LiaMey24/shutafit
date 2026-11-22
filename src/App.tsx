@@ -7,6 +7,7 @@ import CandidateDetail from './screens/CandidateDetail';
 import Matches from './screens/Matches';
 import Chat from './screens/Chat';
 import MyProfile from './screens/MyProfile';
+import SplashIcon from './components/SplashIcon';
 
 function RequireProfile({ children }: { children: ReactNode }) {
   const me = useApp((s) => s.me);
@@ -53,6 +54,7 @@ export default function App() {
   const me = useApp((s) => s.me);
   return (
     <div className="mx-auto min-h-full max-w-[430px] bg-slate-50 sm:my-0 sm:shadow-2xl">
+      <SplashIcon />
       <Routes>
         <Route path="/" element={<Navigate to={me ? '/discover' : '/onboarding'} replace />} />
         <Route path="/onboarding" element={<Onboarding />} />

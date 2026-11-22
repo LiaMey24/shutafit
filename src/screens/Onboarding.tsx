@@ -1,3 +1,4 @@
+import { monthKey, monthLabel } from '../data/moveIn';
 import { useState, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AREAS, HABIT_QUESTIONS, HOBBIES, MUSIC, SHOWS, SOCIAL_QUESTION, WEEKENDS } from '../data/questions';
@@ -117,6 +118,30 @@ export default function Onboarding() {
             <label className="block space-y-1">
               <span className="text-sm font-medium">גיל</span>
               <input className={input} type="number" inputMode="numeric" min={16} max={99} value={d.age || ''} onChange={(e) => setD({ ...d, age: Number(e.target.value) })} />
+            </label>
+            <div className="space-y-1">
+              <span className="text-sm font-medium">מגדר</span>
+              <div className="flex gap-2">
+                {([['f', 'אישה'], ['m', 'גבר']] as const).map(([g, label]) => (
+                  <button
+                    key={g}
+                    type="button"
+                    onClick={() => setD({ ...d, gender: d.gender === g ? undefined : g })}
+                    className={`flex-1 rounded-xl border px-3 py-2 text-sm ${d.gender === g ? 'border-brand-500 bg-brand-500 text-white' : 'border-slate-200 bg-white'}`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <label className="block space-y-1">
+              <span className="text-sm font-medium">מועד כניסה מבוקש</span>
+              <select className={input} value={d.moveIn ?? ''} onChange={(e) => setD({ ...d, moveIn: e.target.value || undefined })}>
+                <option value="">לא משנה</option>
+                {Array.from({ length: 12 }, (_, i) => monthKey(i)).map((k) => (
+                  <option key={k} value={k}>{monthLabel(k)}</option>
+                ))}
+              </select>
             </label>
             <label className="block space-y-1">
               <span className="text-sm font-medium">עיסוק</span>
