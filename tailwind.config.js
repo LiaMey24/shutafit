@@ -15,7 +15,6 @@ export default {
           700: '#4f31c4',
         },
         coral: { 400: '#ff8a7a', 500: '#ff6b5b' },
-        mint: { 200: '#b8f0d8', 700: '#1f7a5a' },
       },
     },
   },

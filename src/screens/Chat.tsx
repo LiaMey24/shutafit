@@ -51,7 +51,7 @@ export default function Chat() {
 
   return (
     <div className="flex h-dvh flex-col">
-      <header className="flex items-center gap-3 border-b border-slate-200 bg-white py-3 pr-16 pl-4">
+      <header className="flex items-center gap-3 border-b border-slate-200 bg-white px-4 py-3">
         <button type="button" onClick={() => navigate('/matches')} className="text-xl text-slate-500" aria-label="חזרה">
           →
         </button>

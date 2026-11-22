@@ -7,7 +7,6 @@ import CandidateDetail from './screens/CandidateDetail';
 import Matches from './screens/Matches';
 import Chat from './screens/Chat';
 import MyProfile from './screens/MyProfile';
-import HomeButton from './components/HomeButton';
 
 function RequireProfile({ children }: { children: ReactNode }) {
   const me = useApp((s) => s.me);
@@ -64,7 +63,6 @@ export default function App() {
         <Route path="/me" element={<WithNav><MyProfile /></WithNav>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <HomeButton />
     </div>
   );
 }
