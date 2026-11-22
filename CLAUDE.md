@@ -45,3 +45,7 @@ Done (phase 1): onboarding, hard filters, score, shared/friction insights, swipe
 Phase 2, planned and not built: roommate groups and a "house profile" (group compatibility = pairwise scores of all members; a house profile = members' habits averaged, so a candidate gets one score against it). Per the spec, auto-generated ice-breaker sentences, advanced pet profiles, and verification are out of scope.
 
 UI text is Hebrew, using slash forms for gender (`מחפש/ת`). Keep new strings consistent with that.
+
+## Workflow
+
+`master` is protected. Never push directly to `master` (and do not use the admin bypass). Work on a feature branch, push that branch, and open a pull request into `master` for review and merge.
