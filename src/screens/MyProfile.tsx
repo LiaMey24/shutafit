@@ -21,7 +21,7 @@ export default function MyProfile() {
   ].filter(Boolean) as string[];
 
   return (
-    <div className="space-y-4 px-4 pt-5 pb-6">
+    <div className="space-y-4 px-4 pt-16 pb-6">
       <div className="flex items-center gap-4">
         <Avatar name={me.name} photo={me.photo} id="me" className="h-20 w-20 text-3xl" />
         <div>
