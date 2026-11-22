@@ -10,7 +10,7 @@ export default function Matches() {
 
   return (
     <div className="px-4 pt-5 pb-4">
-      <h1 className="mb-1 text-2xl font-extrabold">ההתאמות שלי</h1>
+      <h1 className="mb-1 pr-12 text-2xl font-extrabold">ההתאמות שלי</h1>
       <p className="mb-4 text-sm text-slate-500">צ׳אט נפתח רק כששני הצדדים הביעו עניין.</p>
 
       {matches.length === 0 ? (
