@@ -38,6 +38,8 @@ The product spec's "3-layer questionnaire" drives the whole data model and match
 
 A mutual match opens `src/components/MatchModal.tsx`: a full-screen pastel mint overlay (Tailwind `mint-200` background, `mint-700` text) with a large "MATCH!" headline, both avatars, and buttons to open the chat or keep browsing. It is shown from `Discover.tsx` and `CandidateDetail.tsx` when `swipe()` returns true. To test it without onboarding, seed a `me` profile into `localStorage` under `shutafit-v1`.
 
+`src/components/HomeButton.tsx` is a global 🏠 button rendered once in `App.tsx`. It is pinned (`fixed`, `z-[60]`, above `MatchModal`) to the top-right of the 430px app column on every route except `/onboarding`, and navigates to `/discover`. Screen headers reserve right padding (`pr-12`/`pr-16`) so they don't sit under it; keep that in mind when adding new screens or headers. `Discover.tsx` clears the match overlay when the location key changes, so tapping Home while on `/discover` dismisses it.
+
 Routing uses `HashRouter` (`src/App.tsx`). Routes other than `/onboarding` are wrapped in `RequireProfile`, which redirects to onboarding when there is no `me`. Onboarding also serves as "edit profile" (it starts from the existing `me`).
 
 ## Scope
