@@ -22,6 +22,8 @@ interface AppState {
   /** Records a swipe; returns true when it created a mutual match. */
   swipe: (profileId: string, dir: SwipeDir) => boolean;
   sendMessage: (profileId: string, text: string, from?: string) => void;
+  /** Removes a match and its chat. The swipe stays, so they don't return to the deck. */
+  unmatch: (profileId: string) => void;
   swipesLeft: () => number;
   setPremium: (v: boolean) => void;
   reset: () => void;
@@ -66,6 +68,12 @@ export const useApp = create<AppState>()(
           messages: { ...s.messages, [profileId]: [...(s.messages[profileId] ?? []), msg] },
         }));
       },
+
+      unmatch: (profileId) =>
+        set((s) => {
+          const { [profileId]: _removed, ...messages } = s.messages;
+          return { matches: s.matches.filter((m) => m.profileId !== profileId), messages };
+        }),
 
       swipesLeft: () => {
         const { premium, swipeDay } = get();

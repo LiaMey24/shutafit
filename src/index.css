@@ -18,3 +18,35 @@ body {
     background: radial-gradient(circle at 20% 10%, #e8e4ff, #f1f5f9 60%);
   }
 }
+
+/* Dual-thumb range slider: two stacked inputs, only the thumbs take pointer events. */
+.range-input {
+  pointer-events: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+}
+.range-input::-webkit-slider-thumb {
+  pointer-events: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid #7c3aed;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+}
+.range-input::-moz-range-thumb {
+  pointer-events: auto;
+  height: 18px;
+  width: 18px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid #7c3aed;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+}
+.range-input::-webkit-slider-runnable-track { background: transparent; }
+.range-input::-moz-range-track { background: transparent; }

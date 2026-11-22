@@ -1,4 +1,17 @@
-import type { Profile, Weekend } from '../types';
+import { monthKey } from './moveIn';
+import type { Gender, Profile, Weekend } from '../types';
+
+/** Demo profiles' desired move-in, in months from now (0 = this month). */
+const DEMO_MOVE_IN: Record<string, number> = {
+  d1: 1, d2: 0, d3: 2, d4: 0, d5: 3, d6: 1, d7: 5, d8: 2, d9: 4, d10: 0,
+  d11: 6, d12: 3, d13: 1, d14: 8, d15: 2, d16: 4, d17: 0, d18: 7, d19: 3, d20: 1,
+};
+
+/** Demo profiles' gender (f = female, m = male), for the gender filter. */
+const DEMO_GENDER: Record<string, Gender> = {
+  d1: 'f', d2: 'm', d3: 'f', d4: 'm', d5: 'f', d6: 'm', d7: 'f', d8: 'm', d9: 'f', d10: 'm',
+  d11: 'f', d12: 'm', d13: 'f', d14: 'm', d15: 'f', d16: 'm', d17: 'f', d18: 'm', d19: 'f', d20: 'm',
+};
 
 /**
  * Compact demo-profile builder.
@@ -28,6 +41,8 @@ function p(
     id,
     name,
     age,
+    gender: DEMO_GENDER[id],
+    moveIn: monthKey(DEMO_MOVE_IN[id] ?? 0),
     occupation,
     bio,
     filters: {
