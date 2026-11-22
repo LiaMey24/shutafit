@@ -48,7 +48,7 @@ export function ScoreRing({ score, size = 64 }: { score: number; size?: number }
   return (
     <div className="relative shrink-0" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="white" stroke="#ece9f8" strokeWidth={5} />
+        <circle cx={size / 2} cy={size / 2} r={r} strokeWidth={5} className="fill-white stroke-[#ece9f8] dark:fill-[#1c1f30] dark:stroke-[#3a3f5c]" />
         <circle
           cx={size / 2}
           cy={size / 2}

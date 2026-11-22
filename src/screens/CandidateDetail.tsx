@@ -145,7 +145,7 @@ export default function CandidateDetail() {
         </Section>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 mx-auto flex max-w-[430px] gap-3 bg-gradient-to-t from-slate-50 via-slate-50 to-transparent px-4 pt-6 pb-4">
+      <div className="fixed inset-x-0 bottom-0 mx-auto flex max-w-[430px] gap-3 bg-gradient-to-t from-slate-50 via-slate-50 to-transparent dark:from-[#12141f] dark:via-[#12141f] px-4 pt-6 pb-4">
         {isMatch ? (
           <Link to={`/chat/${id}`} className="flex-1 rounded-2xl bg-brand-500 py-3 text-center font-bold text-white">
             💬 לצ׳אט עם {other.name}

@@ -87,7 +87,7 @@ export default function Onboarding() {
   return (
     <div className="flex min-h-full flex-col">
       <header className="sticky top-0 z-10 bg-slate-50/95 px-5 pt-5 pb-3 backdrop-blur">
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex items-center justify-between pl-12">
           <span className="text-xl font-extrabold text-brand-600">Shutafit</span>
           <span className="text-sm text-slate-500">שלב {step + 1} מתוך {STEPS.length}</span>
         </div>

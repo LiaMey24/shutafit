@@ -18,3 +18,66 @@ body {
     background: radial-gradient(circle at 20% 10%, #e8e4ff, #f1f5f9 60%);
   }
 }
+
+/* ---------- Dark mode ----------
+   Toggled by the `dark` class on <html> (see store/useTheme.ts). Instead of touching every
+   utility class in the screens, the light-theme utilities are remapped here to a dark palette.
+   Contrast (WCAG): body text #f1f5f9 and muted text #aab4c8 on surface #1c1f30 are >= 7:1 and
+   >= 6.5:1; brand/amber/emerald/mint text colours below are all >= 7:1 on their backgrounds. */
+html.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background: #0b0d16;
+  color: #f1f5f9;
+}
+
+@media (min-width: 640px) {
+  .dark body {
+    background: radial-gradient(circle at 20% 10%, #241f4d, #0b0d16 60%);
+  }
+}
+
+/* surfaces */
+.dark .bg-slate-50 { background-color: #12141f; }
+.dark .bg-slate-50\/95 { background-color: rgb(18 20 31 / 0.95); }
+.dark .bg-slate-100 { background-color: #2a2e45; }
+.dark .bg-slate-200 { background-color: #3a3f5c; }
+.dark .bg-white { background-color: #1c1f30; }
+.dark .bg-white\/95 { background-color: rgb(28 31 48 / 0.95); }
+.dark .bg-white\/90 { background-color: rgb(28 31 48 / 0.92); }
+.dark .bg-white\/70 { background-color: rgb(28 31 48 / 0.7); }
+.dark .bg-brand-50 { background-color: #2c2653; }
+.dark .bg-amber-50 { background-color: #34290f; }
+.dark .bg-mint-200 { background-color: #0f3a2c; }
+
+/* borders, rings, dividers */
+.dark .border-slate-100,
+.dark .border-slate-200 { border-color: #3a3f5c; }
+.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) { border-color: #2f3350; }
+.dark .ring-slate-200 { --tw-ring-color: #3a3f5c; }
+.dark .border-amber-100 { border-color: #5a4515; }
+.dark .border-amber-300 { border-color: #8a6a1f; }
+.dark .hover\:border-brand-200:hover { border-color: #5a4fb0; }
+
+/* text */
+.dark .text-slate-800 { color: #f1f5f9; }
+.dark .text-slate-700 { color: #e2e8f0; }
+.dark .text-slate-600 { color: #cbd5e1; }
+.dark .text-slate-500 { color: #aab4c8; }
+.dark .text-slate-400 { color: #98a3b8; }
+.dark .text-brand-600,
+.dark .text-brand-700 { color: #c4baff; }
+.dark .text-amber-900 { color: #fde9a8; }
+.dark .text-amber-800 { color: #fcd980; }
+.dark .text-amber-700,
+.dark .text-amber-600 { color: #fbbf24; }
+.dark .text-emerald-700,
+.dark .text-emerald-600 { color: #5eead4; }
+.dark .text-mint-700 { color: #b8f0d8; }
+.dark .text-coral-500 { color: #ff8a7a; }
+
+/* keep white text on filled brand buttons readable on hover/dark */
+.dark .bg-brand-500 { background-color: #6a4ef0; }
+.dark .hover\:bg-brand-600:hover { background-color: #5f3fe6; }

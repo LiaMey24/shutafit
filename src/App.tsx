@@ -8,6 +8,7 @@ import Matches from './screens/Matches';
 import Chat from './screens/Chat';
 import MyProfile from './screens/MyProfile';
 import HomeButton from './components/HomeButton';
+import ThemeToggle from './components/ThemeToggle';
 
 function RequireProfile({ children }: { children: ReactNode }) {
   const me = useApp((s) => s.me);
@@ -65,6 +66,7 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <HomeButton />
+      <ThemeToggle />
     </div>
   );
 }

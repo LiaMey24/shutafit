@@ -33,7 +33,7 @@ export default function Discover() {
 
   return (
     <div className="flex h-[calc(100dvh-58px)] flex-col px-4 pt-4 pb-3">
-      <header className="mb-3 flex items-center justify-between pr-12">
+      <header className="mb-3 flex items-center justify-between pr-12 pl-12">
         <h1 className="text-xl font-extrabold text-brand-600">Shutafit</h1>
         <span className="rounded-full bg-white px-3 py-1 text-xs text-slate-600 shadow-sm">
           {premium ? '⭐ Premium · ללא הגבלה' : `נותרו ${left}/${FREE_SWIPES_PER_DAY} החלקות היום`}
