@@ -49,3 +49,5 @@ UI text is Hebrew, using slash forms for gender (`מחפש/ת`). Keep new string
 ## Workflow
 
 `master` is protected. Never push directly to `master` (and do not use the admin bypass). Work on a feature branch, push that branch, and open a pull request into `master` for review and merge.
+
+Update this `CLAUDE.md` with every final push: before the last push of a branch (the one that goes up for review), make sure this file documents what the branch added or changed, and include that update in the same push.
